@@ -1,5 +1,5 @@
 {
-  "name": "@lulumutuli",
+  "name": "lulumutuli",
   "version": "0.0.3",
   "type": "module",
   "description": "A component library connecting vue with storybook and figma",
