@@ -5,7 +5,7 @@ Connect a Vue project to Figma and Storybook.
 To get started run the commands below
 
 ```
-npm i @regulaitionltd/regulaition-component-library
+npm i @ui-component-library
 
 ```
 
