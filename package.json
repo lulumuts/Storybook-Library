@@ -5,12 +5,11 @@
   "description": "A component library connecting vue with storybook and figma",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lulumuts/Storybook-Library.git"
+    "url": "git+ssh:git@github.com:lulumuts/Storybook-Library.git"
   },
   "author": "Lulu Mutuli",
   "license": "ISC",
 
-  "homepage": "https://gitlab.com/regulaition/regnet/air-platform-mvp/storybook-component-library#readme",
   "files": [
     "dist"
   ],
