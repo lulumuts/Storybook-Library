@@ -1,0 +1,69 @@
+{
+  "name": "@regulaitionltd/regulaition-component-library",
+  "version": "0.0.3",
+  "type": "module",
+  "description": "A component library connecting vue with storybook and figma",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/regulaition/regnet/air-platform-mvp/storybook-component-library.git"
+  },
+  "author": "Lulu Mutuli",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/regulaition/regnet/air-platform-mvp/storybook-component-library/issues"
+  },
+  "homepage": "https://gitlab.com/regulaition/regnet/air-platform-mvp/storybook-component-library#readme",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/ui-library.umd-cjs",
+  "exports": {
+    ".": {
+      "import": "./dist/ui-library.js",
+      "require": "./dist/ui-library.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev --port 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "npx chromatic --project-token=chpt_d2f1186657927c3"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite-plugin-require": "^1.2.14",
+    "vite-plugin-vuetify": "^2.0.3",
+    "vite-svg-loader": "^5.1.0",
+    "vue": "^3.4.21",
+    "vuetify": "^3.6.4"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^1.4.0",
+    "@storybook/addon-docs": "^8.1.11",
+    "@storybook/addon-essentials": "^8.0.10",
+    "@storybook/addon-interactions": "^8.0.10",
+    "@storybook/addon-links": "^8.0.10",
+    "@storybook/blocks": "^8.0.10",
+    "@storybook/builder-vite": "^8.1.5",
+    "@storybook/test": "^8.0.10",
+    "@storybook/vue3": "^8.0.10",
+    "@storybook/vue3-vite": "^8.0.10",
+    "@tsconfig/node20": "^20.1.4",
+    "@types/node": "^20.14.9",
+    "@vue/tsconfig": "^0.5.1",
+    "chromatic": "^11.3.5",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.77.2",
+    "sass-loader": "^14.2.1",
+    "storybook": "^8.0.10",
+    "storybook-addon-designs": "^6.3.1",
+    "style-loader": "^4.0.0",
+    "typescript": "^5.5.2",
+    "vite": "^5.2.0",
+    "vue-tsc": "^2.0.22"
+  }
+}
