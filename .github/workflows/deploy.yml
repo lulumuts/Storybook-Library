@@ -33,16 +33,6 @@ jobs:
       - name: Install Git
         run: sudo apt-get update && sudo apt-get install -y git
 
-      - name: Cache Node.js modules
-        id: cache-modules
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
-
-      - name: Install dependencies
-        run: npm ci
-
       - name: Update dependencies
         run: npm update
 
