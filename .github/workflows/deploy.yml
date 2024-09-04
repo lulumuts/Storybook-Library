@@ -1,25 +1,55 @@
-name: Deploy to GitHub Pages
+# .github/workflows/deploy-github-pages.yaml
+
+# Workflow name
+name: Build and Publish Storybook to GitHub Pages
 
 on:
+  # Event for the workflow to run on
   push:
     branches:
-      - main
+      - main # Replace with the branch you want to deploy from
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# List of jobs
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # Job steps
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      # Manual Checkout
+      - name: Checkout respository
+        uses: actions/checkout@v4
 
-      - name: Install Dependencies
+      # Set up Node
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "14"
+
+      - name: Install Git
+        run: sudo apt-get update && sudo apt-get install -y git
+
+      - name: Cache Node.js modules
+        id: cache-modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
         run: npm ci
 
       - name: Build Storybook
-        run: npm run build-storybook # Ensure this matches your build script
+        run: npx storybook build --output-dir /storybook-static/
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4.0.0
+      #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
+      - name: Deploy to Github Pages
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
         with:
-          github_token: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          publish_dir: ./storybook-static # Adjust based on your build output directory
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist/storybook-static
+          clean: true
