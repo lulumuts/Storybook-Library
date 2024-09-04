@@ -43,6 +43,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Update dependencies
+        run: npm update
+
+      - name: Clean installation
+        run: npm ci --force
+
+      - name: Verify @mdi/font installation
+        run: npm ls @mdi/font
+
       - name: Build Storybook
         run: npx storybook build --output-dir /storybook-static/
 
