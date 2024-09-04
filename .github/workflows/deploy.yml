@@ -56,7 +56,7 @@ jobs:
         run: |
           mkdir -p storybook-static
           chmod -R 755 storybook-static
-          npx storybook build --output-dir storybook-static --webpack-config ./storybook/webpack.config.js
+          npx storybook build --output-dir storybook-static ./storybook/webpack.config.js
 
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - name: Deploy to Github Pages
