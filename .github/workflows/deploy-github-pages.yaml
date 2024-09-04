@@ -30,11 +30,21 @@ jobs:
         with:
           node-version: "14"
 
+      - name: Install Git
+        run: sudo apt-get update && sudo apt-get install -y git
+
+      - name: Cache Node.js modules
+        id: cache-modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
       - name: Install dependencies
         run: npm ci
 
       - name: Build Storybook
-        run: npx storybook build --public-url /storybook-static/
+        run: npx storybook build --output-dir /storybook-static/
 
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - name: Deploy to Github Pages
