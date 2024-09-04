@@ -58,6 +58,13 @@ jobs:
           chmod -R 755 storybook-static
           npx storybook build --output-dir storybook-static ./storybook/webpack.config.js
 
+      - name: Archive artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          dir: storybook-static
+          name: storybook-static
+          label: Storybook Static Files
+
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - name: Deploy to Github Pages
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
@@ -65,3 +72,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static
           clean: true
+          force: true
