@@ -59,11 +59,10 @@ jobs:
           npx storybook build --output-dir storybook-static ./storybook/webpack.config.js
 
       - name: Archive artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
-          dir: storybook-static
+          path: storybook-static/
           name: storybook-static
-          label: Storybook Static Files
 
       #👇 Add Storybook build and deploy to GitHub Pages as a step in the workflow
       - name: Deploy to Github Pages
